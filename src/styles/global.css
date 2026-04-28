@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Estas variables son obligatorias para que el motor de la v4 no encuentre valores nulos */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif", ui-serif, Georgia, serif;
+
+  --color-surface: #fff8f5;
+  --color-primary: #6f5957;
+}
+
+/* Forzamos una regla base para que Lightning CSS tenga un nodo que procesar */
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: #1f1b18;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
