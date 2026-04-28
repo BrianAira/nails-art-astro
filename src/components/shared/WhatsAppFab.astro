@@ -1,0 +1,20 @@
+---
+const phone = "542622698336";
+const whatsappUrl = `https://wa.me/${phone}`;
+---
+
+<a 
+  href={whatsappUrl} 
+  target="_blank" 
+  rel="noopener noreferrer"
+  class="fixed bottom-8 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform active:scale-95 group"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"/>
+  </svg>
+  
+  <span class="absolute right-20 bg-on-surface text-gray-900 text-[10px] font-bold uppercase tracking-widest py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity whitespace-nowrap">
+    ¿Tienes dudas? Escríbenos
+  </span>
+</a>
