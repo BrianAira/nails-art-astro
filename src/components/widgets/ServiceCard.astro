@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+
+// Obtenemos todos los servicios de la colección
+const servicios = await getCollection('services');
+
+// Opcional: Podríamos filtrar por los destacados (featured) si quisiéramos
+// const destacados = servicios.filter(s => s.data.featured);
+---
+
+<section id="services" class="py-24 bg-surface-container-lowest">
+  <div class="max-w-[1200px] mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+      <div class="max-w-2xl">
+        <span class="inline-block font-sans text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4">
+          Nuestras Especialidades
+        </span>
+        <h2 class="font-serif text-4xl md:text-5xl text-on-surface leading-tight">
+          Servicios diseñados para <br/> <span class="italic font-light">resaltar tu esencia.</span>
+        </h2>
+      </div>
+      <p class="text-on-surface-variant font-sans max-w-sm leading-relaxed">
+        Cada tratamiento combina técnica avanzada con productos de alta calidad para garantizar salud y belleza en tus manos.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {servicios.map((servicio) => (
+        <article class="group relative flex flex-col bg-surface rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2">
+          {/* Imagen con Overlay al hacer Hover */}
+          <div class="aspect-[4/5] overflow-hidden relative">
+            <img 
+              src={servicio.data.image} 
+              alt={servicio.data.title}
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {servicio.data.featured && (
+              <span class="absolute top-4 right-4 bg-primary/90 text-on-primary text-[10px] font-bold uppercase tracking-widest py-1 px-3 rounded-full backdrop-blur-sm">
+                Destacado
+              </span>
+            )}
+          </div>
+
+          {/* Contenido de la Card */}
+          <div class="p-8 flex flex-col flex-grow border-x border-b border-outline-variant rounded-b-2xl">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70">
+                {servicio.data.category}
+              </span>
+              <span class="text-xs font-sans text-on-surface-variant">
+                {servicio.data.duration}
+              </span>
+            </div>
+
+            <h3 class="font-serif text-2xl text-on-surface mb-3">
+              {servicio.data.title}
+            </h3>
+
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6 flex-grow">
+              {servicio.data.description}
+            </p>
+
+            <div class="pt-6 border-t border-outline-variant flex items-center justify-between">
+              <span class="font-serif text-xl text-on-surface">
+                ${servicio.data.price}
+              </span>
+              <a 
+                href="#contacto" 
+                class="text-xs font-bold uppercase tracking-widest text-primary hover:text-primary/70 transition-colors"
+              >
+                Reservar turno →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

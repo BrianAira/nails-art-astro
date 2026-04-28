@@ -1,0 +1,77 @@
+---
+const images = [
+  {
+    src: "https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=800",
+    alt: "Nail Art Minimalista",
+    size: "tall" // Controlaremos el aspecto con clases
+  },
+  {
+    src: "https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=800",
+    alt: "Manicura Rusa Detalle",
+    size: "wide"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?q=80&w=800",
+    alt: "Esmaltado Semipermanente",
+    size: "normal"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?q=80&w=800",
+    alt: "Decoración de Salón",
+    size: "normal"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800",
+    alt: "Soft Gel Nails",
+    size: "tall"
+  }
+];
+---
+
+<section id="lookbook" class="py-24 bg-surface">
+  <div class="max-w-[1200px] mx-auto px-6">
+    
+    <div class="text-center mb-16">
+      <span class="inline-block font-sans text-[10px] font-bold uppercase tracking-[0.4em] text-primary mb-4">
+        Portafolio Visual
+      </span>
+      <h2 class="font-serif text-4xl md:text-6xl text-on-surface mb-6">
+        Nuestras <span class="italic font-light">Creaciones</span>
+      </h2>
+      <div class="w-20 h-px bg-primary/30 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] md:auto-rows-[250px]">
+      {images.map((img) => (
+        <div class={`relative group overflow-hidden rounded-xl shadow-sm transition-all duration-700 hover:shadow-2xl
+          ${img.size === 'tall' ? 'row-span-2' : ''}
+          ${img.size === 'wide' ? 'col-span-2' : ''}
+        `}>
+          <img 
+            src={img.src} 
+            alt={img.alt}
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+          />
+          
+          <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-[2px] flex flex-col justify-end p-6">
+            <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <p class="text-white text-[10px] font-bold uppercase tracking-widest mb-1">Valeria Nails</p>
+              <p class="text-white font-serif text-lg">{img.alt}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 text-center">
+      <a 
+        href="https://instagram.com/tucuentadeinstagram" 
+        target="_blank" 
+        class="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest text-on-surface hover:text-primary transition-colors group"
+      >
+        Ver más en Instagram
+        <span class="w-8 h-px bg-on-surface group-hover:bg-primary transition-all"></span>
+      </a>
+    </div>
+  </div>
+</section>
